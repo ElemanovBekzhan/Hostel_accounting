@@ -1,11 +1,13 @@
-﻿namespace Hostel_accounting
+using System.ComponentModel;
+
+namespace Hostel_accounting
 {
-    partial class Form1
+    partial class Students
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,10 +31,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Students
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Name = "Students";
+            this.Text = "Students";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Students_FormClosing);
+            this.ResumeLayout(false);
         }
 
         #endregion

@@ -1,0 +1,15 @@
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\Hostel_accounting.exe.config
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\Hostel_accounting.exe
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\Hostel_accounting.pdb
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.AssemblyReference.cache
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.SuggestedBindingRedirects.cache
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Properties.Resources.resources
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.GenerateResource.cache
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.CoreCompileInputs.cache
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.exe
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.pdb
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Auth.resources
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Form1.resources
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Students.resources
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Pyament_history.resources
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Rooms.resources
