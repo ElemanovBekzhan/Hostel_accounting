@@ -13,3 +13,18 @@ C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel
 C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Students.resources
 C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Pyament_history.resources
 C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Rooms.resources
+D:\3 курс\общежитие\Hostel_accounting\bin\Debug\Hostel_accounting.exe.config
+D:\3 курс\общежитие\Hostel_accounting\bin\Debug\Hostel_accounting.exe
+D:\3 курс\общежитие\Hostel_accounting\bin\Debug\Hostel_accounting.pdb
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.AssemblyReference.cache
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.SuggestedBindingRedirects.cache
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.Auth.resources
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.Form1.resources
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.Properties.Resources.resources
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.Pyament_history.resources
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.Rooms.resources
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.Students.resources
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.GenerateResource.cache
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.CoreCompileInputs.cache
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.exe
+D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.pdb

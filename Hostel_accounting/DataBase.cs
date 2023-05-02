@@ -5,13 +5,14 @@ namespace Hostel_accounting
     public class DataBase
     {
         private SqlConnection con =
-            new SqlConnection(@"Data Source=BEKZHAN\MURIM;Initial Catalog=dormitory;Integrated Security=True");
+            new SqlConnection(@"Data Source=DESKTOP-LQOC5FQ;Initial Catalog=dormitory;Integrated Security=True");
         //Server=BEKZHAN\MURIM;Database=Sklad
         public void openConnection()
         {
             if (con.State == System.Data.ConnectionState.Closed)
             {
                 con.Open();
+
             }
         }
 
@@ -19,7 +20,8 @@ namespace Hostel_accounting
         {
             if (con.State == System.Data.ConnectionState.Open)
             {
-                con.Close();
+                con.Close(); 
+
             }
         }
 
