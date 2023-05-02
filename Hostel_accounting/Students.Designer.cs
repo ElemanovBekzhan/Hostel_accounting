@@ -41,6 +41,7 @@ namespace Hostel_accounting
             this.Name = "Students";
             this.Text = "Students";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Students_FormClosing);
+            this.Load += new System.EventHandler(this.Students_Load);
             this.ResumeLayout(false);
         }
 
