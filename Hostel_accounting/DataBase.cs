@@ -20,7 +20,8 @@ namespace Hostel_accounting
         {
             if (con.State == System.Data.ConnectionState.Open)
             {
-                con.Close();
+                con.Close(); 
+
             }
         }
 
