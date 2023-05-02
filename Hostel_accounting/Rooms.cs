@@ -26,8 +26,8 @@ namespace Hostel_accounting
             this.Hide();*/
         }
 
-        // private void Rooms_Load(object sender, EventArgs e)
-        // {
+        private void Rooms_Load(object sender, EventArgs e)
+         {
         //     Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
         //     int x = (screenBounds.Width - this.ClientSize.Width) / 2;
         //     int y = (screenBounds.Height - this.ClientSize.Height) / 2;
@@ -43,6 +43,7 @@ namespace Hostel_accounting
         //     dataGridView1.DataSource = Table;
         //     dataGridView1.Columns["Roomid"].Visible = false;
         //     dataGridView1.Columns["Roomid"].ReadOnly = true;
-        // }
+        
+         }
     }
 }
