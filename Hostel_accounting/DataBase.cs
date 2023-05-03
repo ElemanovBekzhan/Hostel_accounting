@@ -7,6 +7,7 @@ namespace Hostel_accounting
         private SqlConnection con =
             new SqlConnection(@"Data Source=DESKTOP-LQOC5FQ;Initial Catalog=dormitory;Integrated Security=True");
         //Server=BEKZHAN\MURIM;Database=Sklad
+        //Server=DESKTOP-LQOC5FQ;
         public void openConnection()
         {
             if (con.State == System.Data.ConnectionState.Closed)
