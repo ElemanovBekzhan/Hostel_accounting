@@ -5,8 +5,8 @@ namespace Hostel_accounting
     public class DataBase
     {
         private SqlConnection con =
-            new SqlConnection(@"Data Source=DESKTOP-LQOC5FQ;Initial Catalog=dormitory;Integrated Security=True");
-        //Server=BEKZHAN\MURIM;Database=Sklad
+            new SqlConnection(@"Data Source=BEKZHAN\MURIM;Initial Catalog=dormitory;Integrated Security=True");
+        //Server=BEKZHAN\MURIM;
         //Server=DESKTOP-LQOC5FQ;
         public void openConnection()
         {

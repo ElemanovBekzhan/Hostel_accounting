@@ -35,23 +35,37 @@ namespace Hostel_accounting
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            if (textBox2.Text != "" && maskedTextBox2.Text != "" && maskedTextBox1.Text != "" && textBox5.Text != "" && maskedTextBox3.Text != "")
+            /*if (maskedTextBox2.Text != "" && maskedTextBox1.Text != "" && textBox5.Text != "" && maskedTextBox3.Text != "")
             {
                 MessageBox.Show("Данные не введены");
             }
             else
-            {
+            {*/
+                
                 try
                 {
                     dataBase.openConnection();
-
-                    string quary = "INSERT INTO Students (FIO, BirthDate, PhoneNumber, Email, StudentCardNumber,FacultiesId) VALUES('" + textBox2.Text + "', '" + maskedTextBox2.Text + "', '" + maskedTextBox1.Text + "' , '" + textBox5.Text + "' ,'" + maskedTextBox3.Text + "' , '" + comboBox1.SelectedValue + "')";
-                    SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
-                    cmd.ExecuteNonQuery();
-                    Table.Clear();
-                    adapter.Fill(Table);
-                    dataGridView1.DataSource = Table;
-                    textBox2.Text = "";
+                    
+                    string quary_room = "SELECT COUNT(*) FROM Rooms WHERE Occupied = 1";
+                    SqlCommand cmd = new SqlCommand(quary_room, dataBase.getConnection());
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count == 1)
+                    {
+                        MessageBox.Show("Нет свободных комнат", "Заселение", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        string quary =
+                            "INSERT INTO Students (FIO, BirthDate, PhoneNumber, Email, StudentCardNumber,FacultiesId) VALUES('" +
+                            textBox2.Text + "', '" + dateTimePicker1.Value + "', '" + textBox4.Text + "' , '" +
+                            textBox5.Text + "' ,'" + maskedTextBox3.Text + "' , '" + comboBox1.SelectedValue + "')";
+                        SqlCommand cmd1 = new SqlCommand(quary, dataBase.getConnection());
+                        cmd1.ExecuteNonQuery();
+                        Table.Clear();
+                        adapter.Fill(Table);
+                        dataGridView1.DataSource = Table;
+                        textBox2.Text = "";
+                    }
                 }
                 catch (Exception exception)
                 {
@@ -62,7 +76,7 @@ namespace Hostel_accounting
                 {
                     dataBase.closeConnection();
                 }
-            }
+            //}
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -71,8 +85,8 @@ namespace Hostel_accounting
 
             textBox1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             textBox2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            maskedTextBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            maskedTextBox1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBox4.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBox5.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             maskedTextBox3.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             comboBox1.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
@@ -87,7 +101,7 @@ namespace Hostel_accounting
         private void Students_Load(object sender, System.EventArgs e)
         {
             dataBase.openConnection();
-            string query = "SELECT dbo.Students.StudentId, dbo.Students.FIO, dbo.Students.BirthDate, dbo.Students.PhoneNumber, dbo.Students.Email, dbo.Students.StudentCardNumber, dbo.Faculties.FacultiesName FROM dbo.Students INNER JOIN dbo.Faculties ON dbo.Students.FacultiesId = dbo.Faculties.FacultiesId";
+            string query = "SELECT dbo.Students.StudentId, dbo.Students.FIO, dbo.Students.BirthDate, dbo.Students.PhoneNumber, dbo.Students.Email, dbo.Students.StudentCardNumber, dbo.Faculties.FacultiesName, dbo.Students.Room_residence FROM dbo.Students INNER JOIN dbo.Faculties ON dbo.Students.FacultiesId = dbo.Faculties.FacultiesId";
             adapter = new SqlDataAdapter(query, dataBase.getConnection());
             Table = new DataTable();
             adapter.Fill(Table);
@@ -103,6 +117,7 @@ namespace Hostel_accounting
             dataGridView1.Columns[4].HeaderText = "Почта";
             dataGridView1.Columns[5].HeaderText = "Студенческий номер";
             dataGridView1.Columns[6].HeaderText = "Факультет";
+            dataGridView1.Columns[7].HeaderText = "Номер комнаты";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -126,8 +141,6 @@ namespace Hostel_accounting
                         Table.Clear();
                         adapter.Fill(Table);
                         dataGridView1.DataSource = Table;
-                        maskedTextBox2.Text = "";
-
                     }
                     catch (Exception exception)
                     {
@@ -145,7 +158,7 @@ namespace Hostel_accounting
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text != "" && maskedTextBox2.Text != "" && maskedTextBox1.Text != "" && textBox5.Text != "" && maskedTextBox3.Text != "")
+            if (textBox2.Text != "" && textBox4.Text != "" && textBox5.Text != "" && maskedTextBox3.Text != "")
             {
                 MessageBox.Show("Данные не выбраны");
             }
@@ -154,7 +167,7 @@ namespace Hostel_accounting
                 try
                 {
                     dataBase.openConnection();
-                    string quary = "UPDATE  Students  set FIO = '" + textBox2.Text + "' , BirthDate = '" + maskedTextBox2.Text + "', PhoneNumber = '" + maskedTextBox1.Text + "' , Email =  '" + textBox5.Text + "', StudentCardNumber = '" + maskedTextBox3.Text + "',FacultiesId = '" + comboBox1.SelectedValue + "' WHERE StudentID ='" + textBox1.Text + "';";
+                    string quary = "UPDATE  Students  set FIO = '" + textBox2.Text + "' , BirthDate = '" + dateTimePicker1.Value + "', PhoneNumber = '" + textBox4.Text + "' , Email =  '" + textBox5.Text + "', StudentCardNumber = '" + maskedTextBox3.Text + "',FacultiesId = '" + comboBox1.SelectedValue + "' WHERE StudentID ='" + textBox1.Text + "';";
                     SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
                     cmd.ExecuteNonQuery();
                     Table.Clear();
@@ -223,6 +236,21 @@ namespace Hostel_accounting
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Разрешить ввод только цифр и клавиш управления текстом (backspace, delete, arrow keys)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            // Ограничить количество символов в TextBox до 10
+            if (textBox1.TextLength >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
