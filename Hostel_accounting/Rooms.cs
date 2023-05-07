@@ -11,8 +11,8 @@ namespace Hostel_accounting
     {
         
         private DataBase dataBase = new DataBase();
-        private DataTable Table, Table1 = null;
-        private SqlDataAdapter adapter, adapter1 = null;
+        private DataTable Table = null;
+        private SqlDataAdapter adapter = null;
         public Rooms()
         {
             InitializeComponent();
@@ -67,13 +67,8 @@ namespace Hostel_accounting
         {
             textBox1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             textBox2.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBox5.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            textBox5.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                bool value = (bool)dataGridView1.SelectedRows[0].Cells["Occupied"].Value;
-                checkBox1.Checked = value;
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,9 +83,13 @@ namespace Hostel_accounting
                 try
                 {
                     dataBase.openConnection();
-                    string quary = "INSERT INTO Rooms (RoomNumber, Capacity, Occupied, Rent) VALUES('" + textBox2.Text +
-                                   "', '" + textBox3.Text + "', '" + checkBox1.Checked + "' , '" + textBox5.Text +"')";
+                    string quary = "INSERT INTO Rooms (RoomNumber,Settled ,Capacity, Occupied, Rent) VALUES(@RoomNumber, @Settled, @Capacity, @Occupied, @Rent)";
                     SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
+                    cmd.Parameters.AddWithValue("@RoomNumber", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@Settled", 0);
+                    cmd.Parameters.AddWithValue("@Capacity", textBox3.Text);
+                    cmd.Parameters.AddWithValue("@Occupied", 0);
+                    cmd.Parameters.AddWithValue("@Rent", textBox5.Text);
                     cmd.ExecuteNonQuery();
                     Table.Clear();
                     adapter.Fill(Table);
@@ -124,11 +123,8 @@ namespace Hostel_accounting
                 {
                     
                     dataBase.openConnection();
-                    bool value = checkBox1.Checked ? true : false;
-                    string quary = "UPDATE  Rooms  SET RoomNumber = '" + textBox2.Text + "' ,Capacity = '" +
-                                   textBox3.Text + "', Occupied = '" + "@value" + "' , Rent =  '" + textBox5.Text + "' WHERE RoomId ='" + textBox1.Text + "';";
+                    string quary = "UPDATE  Rooms  SET RoomNumber = '" + textBox2.Text + "' , Capacity = '" + textBox3.Text + "',Rent =  '" + textBox5.Text + "' WHERE RoomId ='" + textBox1.Text + "';";
                     SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
-                    cmd.Parameters.AddWithValue("@value", value);
                     cmd.ExecuteNonQuery();
                     Table.Clear();
                     adapter.Fill(Table);

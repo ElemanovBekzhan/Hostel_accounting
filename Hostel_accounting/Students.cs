@@ -158,9 +158,9 @@ namespace Hostel_accounting
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text != "" && textBox4.Text != "" && textBox5.Text != "" && maskedTextBox3.Text != "")
+            if (textBox2.Text == "" && textBox4.Text == "" && textBox5.Text == "" && maskedTextBox3.Text == "")
             {
-                MessageBox.Show("Данные не выбраны");
+                MessageBox.Show("Данные не введены");
             }
             else
             {
@@ -251,6 +251,11 @@ namespace Hostel_accounting
             {
                 e.Handled = true;
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

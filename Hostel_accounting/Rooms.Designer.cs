@@ -47,7 +47,6 @@ namespace Hostel_accounting
             this.button1 = new System.Windows.Forms.Button();
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dormitoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -57,7 +56,7 @@ namespace Hostel_accounting
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(663, 171);
+            this.label4.Location = new System.Drawing.Point(663, 154);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 15);
@@ -77,7 +76,7 @@ namespace Hostel_accounting
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(660, 188);
+            this.textBox5.Location = new System.Drawing.Point(660, 171);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(134, 20);
@@ -194,20 +193,9 @@ namespace Hostel_accounting
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(663, 142);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(131, 24);
-            this.checkBox1.TabIndex = 64;
-            this.checkBox1.Text = "Статус";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Rooms
             // 
             this.ClientSize = new System.Drawing.Size(844, 511);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox5);
@@ -227,8 +215,6 @@ namespace Hostel_accounting
             this.ResumeLayout(false);
             this.PerformLayout();
         }
-
-        private System.Windows.Forms.CheckBox checkBox1;
 
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
