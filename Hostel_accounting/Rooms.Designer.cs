@@ -32,6 +32,7 @@ namespace Hostel_accounting
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rooms));
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -207,6 +208,7 @@ namespace Hostel_accounting
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Rooms";
             this.Load += new System.EventHandler(this.Rooms_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dormitoryDataSet)).EndInit();
