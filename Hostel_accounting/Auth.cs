@@ -18,7 +18,7 @@ namespace Hostel_accounting
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Obshaga" & textBox2.Text == "12345678" )
+            if (textBox1.Text == "kg312" & textBox2.Text == "12345678" )
             {
                 textBox1.Text = "";
                 textBox2.Text = "";
