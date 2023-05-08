@@ -53,5 +53,11 @@ namespace Hostel_accounting
             auth.Show();
             this.Hide();
         }
+
+        private void оРазработчикеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Developers developers = new Developers();
+            developers.Show();
+        }
     }
 }
