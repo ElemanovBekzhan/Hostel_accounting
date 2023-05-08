@@ -133,5 +133,86 @@ namespace Hostel_accounting
                 comboBox2.Items.Add(RoomNumber.ToString());
             }*/
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            comboBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            comboBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBox5.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox5.Text == "")
+            {
+                MessageBox.Show("Данные не введены", "Ошибка" ,MessageBoxButtons.OK);
+            }
+            else
+            {
+                try
+                {
+                    dataBase.openConnection();
+                    string quary =
+                        "UPDATE Payments SET StudentId = @FIO, RoomsId = @RoomNumber, PaymentDate = @PaymentDate, Amount = @Amount WHERE PaymentId = '" +
+                        textBox1.Text + "';";
+                    SqlCommand cmd1 = new SqlCommand(quary, dataBase.getConnection());
+                    cmd1.Parameters.AddWithValue("@FIO", comboBox1.SelectedValue);
+                    cmd1.Parameters.AddWithValue("@RoomNumber", comboBox2.SelectedValue);
+                    cmd1.Parameters.AddWithValue("@PaymentDate", DateTime.Today);
+                    cmd1.Parameters.AddWithValue("@Amount", textBox5.Text);
+                    cmd1.ExecuteNonQuery();
+                    Table.Clear();
+                    adapter.Fill(Table);
+                    dataGridView1.DataSource = Table;
+                    textBox5.Text = "";
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throw;
+                }
+                finally
+                {
+                    dataBase.closeConnection();
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                if (textBox1.Text == "")
+                {
+                    MessageBox.Show("Данные не выбраны");
+                }
+                else
+                {
+                    try
+                    {
+                        dataBase.openConnection();
+                        string quary = "DELETE FROM Payments WHERE PaymentId ='" + textBox1.Text + "';";
+
+                        SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
+                        cmd.ExecuteNonQuery();
+                        Table.Clear();
+                        adapter.Fill(Table);
+                        dataGridView1.DataSource = Table;
+                        textBox5.Text = "";
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception);
+                        throw;
+                    }
+                    finally
+                    {
+                        dataBase.closeConnection();
+                    }
+                }
+            }
+        }
     }
 }

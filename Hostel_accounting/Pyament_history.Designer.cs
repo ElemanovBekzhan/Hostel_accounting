@@ -74,6 +74,7 @@ namespace Hostel_accounting
             this.button2.TabIndex = 65;
             this.button2.Text = "Обновить";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tableAdapterManager
             // 
@@ -123,6 +124,7 @@ namespace Hostel_accounting
             this.button3.TabIndex = 66;
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
@@ -172,6 +174,7 @@ namespace Hostel_accounting
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(590, 481);
             this.dataGridView1.TabIndex = 63;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // comboBox1
             // 
