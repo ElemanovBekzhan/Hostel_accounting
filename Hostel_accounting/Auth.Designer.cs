@@ -42,6 +42,7 @@ namespace Hostel_accounting
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(212, 311);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 38);
@@ -61,7 +62,7 @@ namespace Hostel_accounting
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(81, 216);
+            this.label3.Location = new System.Drawing.Point(117, 217);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 9;
@@ -79,7 +80,7 @@ namespace Hostel_accounting
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 148);
+            this.label1.Location = new System.Drawing.Point(117, 149);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 7;
@@ -96,6 +97,7 @@ namespace Hostel_accounting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(585, 421);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);

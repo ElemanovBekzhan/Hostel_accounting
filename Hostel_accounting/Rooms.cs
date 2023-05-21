@@ -53,6 +53,7 @@ namespace Hostel_accounting
             dataGridView1.Columns[3].HeaderText = "Вместимость";
             dataGridView1.Columns[4].HeaderText = "Статус";
             dataGridView1.Columns[5].HeaderText = "Стоимость";
+            dataGridView1.Columns[6].HeaderText = "Комната для";
 
             
             dataBase.closeConnection();

@@ -24,7 +24,6 @@ namespace Hostel_accounting
                 textBox2.Text = "";
                 Form1 menu = new Form1();
                 menu.Show();
-                this.Hide();
             }
             else
             {
