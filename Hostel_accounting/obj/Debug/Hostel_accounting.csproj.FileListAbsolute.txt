@@ -28,3 +28,11 @@ D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.c
 D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.CoreCompileInputs.cache
 D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.exe
 D:\3 курс\общежитие\Hostel_accounting\obj\Debug\Hostel_accounting.pdb
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\EPPlus.dll
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\EPPlus.xml
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.Report.resources
+C:\Users\user\RiderProjects\Hostel_accounting\Hostel_accounting\obj\Debug\Hostel_accounting.csproj.CopyComplete

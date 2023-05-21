@@ -66,6 +66,7 @@ namespace Hostel_accounting
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dormitoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
@@ -392,21 +393,35 @@ namespace Hostel_accounting
             this.label10.TabIndex = 33;
             this.label10.Text = "Дата поступления";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(959, 593);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(145, 48);
+            this.button5.TabIndex = 35;
+            this.button5.Text = "Отчет";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.CustomFormat = "dd-MM-yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(678, 504);
+            this.dateTimePicker2.Location = new System.Drawing.Point(662, 503);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker2.TabIndex = 34;
+            this.dateTimePicker2.Size = new System.Drawing.Size(110, 20);
+            this.dateTimePicker2.TabIndex = 36;
             // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 591);
+            this.ClientSize = new System.Drawing.Size(1158, 652);
             this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.checkBox1);
@@ -446,6 +461,8 @@ namespace Hostel_accounting
         }
 
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+
+        private System.Windows.Forms.Button button5;
 
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;

@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System;
+using System.Drawing;
 using System.Linq;
 
 namespace Hostel_accounting
@@ -108,6 +109,14 @@ namespace Hostel_accounting
 
         private void Students_Load(object sender, System.EventArgs e)
         {
+            Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
+            int x = (screenBounds.Width - this.ClientSize.Width) / 2;
+            int y = (screenBounds.Height - this.ClientSize.Height) / 2;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(x, y);
+            
+            
+            
             dataBase.openConnection();
             string query = "SELECT dbo.Students.StudentId, dbo.Students.FIO, dbo.Sex.Sex, dbo.Students.BirthDate, dbo.Students.PhoneNumber, dbo.Students.Email, dbo.Students.StudentCardNumber, dbo.Faculties.FacultiesName, dbo.Rooms.RoomNumber," + 
             " dbo.Students.Passport, dbo.Students.Inventory, dbo.Students.Data_of_receipt"+
@@ -286,6 +295,13 @@ namespace Hostel_accounting
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Report report = new Report();
+            report.Show();
+            this.Hide();
         }
     }   
   
