@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 
@@ -37,7 +38,7 @@ namespace Hostel_accounting
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            if (textBox2.Text == "" || textBox4.Text == "" || textBox5.Text == "" || maskedTextBox3.Text == "" || textBox6.Text == "")
+            if (textBox2.Text == "" || textBox4.Text == "" || textBox5.Text == "" || maskedTextBox3.Text == "" || maskedTextBox1.Text == "")
             {
                 MessageBox.Show("Данные не введены");
             }
@@ -49,7 +50,7 @@ namespace Hostel_accounting
                     string quary =
                             "INSERT INTO Students (FIO, Sex, BirthDate, PhoneNumber, Email, StudentCardNumber,FacultiesId, Passport, Inventory, Data_of_receipt) VALUES('" +
                             textBox2.Text + "', '" + comboBox2.SelectedValue + "','" + dateTimePicker1.Value + "', '" + textBox4.Text + "' , '" +
-                            textBox5.Text + "' ,'" + maskedTextBox3.Text + "' ,'" + comboBox1.SelectedValue + "' ,'" + textBox6.Text + "' ,'" + checkBox1.Checked + "' ,'" + dateTimePicker2.Value +"')";
+                            textBox5.Text + "' ,'" + maskedTextBox3.Text + "' ,'" + comboBox1.SelectedValue + "' ,'" + maskedTextBox1.Text + "' ,'" + checkBox1.Checked + "' ,'" + dateTimePicker2.Value +"')";
                         SqlCommand cmd1 = new SqlCommand(quary, dataBase.getConnection());
                         cmd1.ExecuteNonQuery();
                         Table.Clear();
@@ -59,7 +60,7 @@ namespace Hostel_accounting
                         textBox4.Text = "";
                         textBox5.Text = "";
                         maskedTextBox3.Text = "";
-                        textBox6.Text = "";
+                        maskedTextBox1.Text = "";
                 }
                 catch (SqlException ex)
                 {
@@ -97,7 +98,7 @@ namespace Hostel_accounting
             textBox5.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             maskedTextBox3.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
             comboBox1.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-            textBox6.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
+            maskedTextBox1.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
             checkBox1.Text = dataGridView1.CurrentRow.Cells[10].Value.ToString();
             dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[11].Value.ToString();
         }
@@ -140,11 +141,12 @@ namespace Hostel_accounting
             dataGridView1.Columns[4].HeaderText = "Телефон";
             dataGridView1.Columns[5].HeaderText = "Почта";
             dataGridView1.Columns[6].HeaderText = "Студенческий номер";
-            dataGridView1.Columns[7].HeaderText = "Факультет";
+            dataGridView1.Columns[7].HeaderText = "Институт";
             dataGridView1.Columns[8].HeaderText = "Комната №";
             dataGridView1.Columns[9].HeaderText = "ID Пасспорта";
             dataGridView1.Columns[10].HeaderText = "Инвентарь";
             dataGridView1.Columns[11].HeaderText = "Дата поступления";
+            //maskedTextBox1.Validating += maskedTextBox1_Validating;
         }
 
         private void Load_combobox2()
@@ -208,7 +210,7 @@ namespace Hostel_accounting
                 try
                 {
                     dataBase.openConnection();
-                    string quary = "UPDATE  Students  set FIO = '" + textBox2.Text + "' , Sex = '" + comboBox2.SelectedValue +  "' , BirthDate = '" + dateTimePicker1.Value + "', PhoneNumber = '" + textBox4.Text + "' , Email =  '" + textBox5.Text + "', StudentCardNumber = '" + maskedTextBox3.Text + "',FacultiesId = '" + comboBox1.SelectedValue + "' , Passport = '" + textBox6.Text + "' , Data_of_receipt = '" + dateTimePicker2.Value +  "' WHERE StudentID ='" + textBox1.Text + "';";
+                    string quary = "UPDATE  Students  set FIO = '" + textBox2.Text + "' , Sex = '" + comboBox2.SelectedValue +  "' , BirthDate = '" + dateTimePicker1.Value + "', PhoneNumber = '" + textBox4.Text + "' , Email =  '" + textBox5.Text + "', StudentCardNumber = '" + maskedTextBox3.Text + "',FacultiesId = '" + comboBox1.SelectedValue + "' , Passport = '" + maskedTextBox1.Text + "' , Data_of_receipt = '" + dateTimePicker2.Value +  "' WHERE StudentID ='" + textBox1.Text + "';";
                     SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
                     cmd.ExecuteNonQuery();
                     Table.Clear();
@@ -302,6 +304,32 @@ namespace Hostel_accounting
             Report report = new Report();
             report.Show();
             this.Hide();
+        }
+
+        private void maskedTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            // Ограничить количество символов в TextBox до 10
+            if (textBox1.TextLength >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void maskedTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            string value = maskedTextBox1.Text;
+
+            if (value.Length != 9 || !value.StartsWith("ID") || !int.TryParse(value.Substring(2), out _))
+            {
+                // Значение не соответствует шаблону "ID" + 7 цифр
+                MessageBox.Show("Введите значение в формате ID1234567.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true; // Отменить переход фокуса
+            }
         }
     }   
   

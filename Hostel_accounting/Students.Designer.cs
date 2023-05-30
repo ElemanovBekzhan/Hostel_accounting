@@ -61,13 +61,13 @@ namespace Hostel_accounting
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dormitoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -270,9 +270,9 @@ namespace Hostel_accounting
             this.label6.Location = new System.Drawing.Point(32, 487);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 15);
+            this.label6.Size = new System.Drawing.Size(70, 15);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Факультет";
+            this.label6.Text = "Институт";
             // 
             // maskedTextBox3
             // 
@@ -344,14 +344,6 @@ namespace Hostel_accounting
             this.label7.TabIndex = 27;
             this.label7.Text = "Пол";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(380, 504);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(111, 20);
-            this.textBox6.TabIndex = 28;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -415,18 +407,26 @@ namespace Hostel_accounting
             this.dateTimePicker2.Size = new System.Drawing.Size(110, 20);
             this.dateTimePicker2.TabIndex = 36;
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(380, 506);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 37;
+            this.maskedTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.maskedTextBox1_Validating);
+            // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 652);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.textBox4);
@@ -460,12 +460,13 @@ namespace Hostel_accounting
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
 
         private System.Windows.Forms.Button button5;
 
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label9;

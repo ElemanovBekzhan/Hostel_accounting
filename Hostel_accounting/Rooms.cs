@@ -11,8 +11,8 @@ namespace Hostel_accounting
     {
         
         private DataBase dataBase = new DataBase();
-        private DataTable Table = null;
-        private SqlDataAdapter adapter = null;
+        private DataTable Table, Table2 = null;
+        private SqlDataAdapter adapter, adapter2 = null;
         public Rooms()
         {
             InitializeComponent();
@@ -35,11 +35,15 @@ namespace Hostel_accounting
             int y = (screenBounds.Height - this.ClientSize.Height) / 2;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(x, y);
+            
+            load_combobox();
 
             textBox1.Visible = false;
             textBox1.ReadOnly = true;
             dataBase.openConnection();
-            string query = "SELECT * FROM Rooms";
+            string query = "SELECT        dbo.Rooms.RoomId, dbo.Rooms.RoomNumber, dbo.Rooms.Settled, dbo.Rooms.Capacity, dbo.Rooms.Occupied, dbo.Rooms.Rent, dbo.Sex.Sex"+
+            " FROM            dbo.Rooms INNER JOIN" +
+            " dbo.Sex ON dbo.Rooms.Room_for = dbo.Sex.ID";
             adapter = new SqlDataAdapter( query, dataBase.getConnection());
             DataSet dataSet = new DataSet();
             Table = new DataTable();
@@ -62,7 +66,17 @@ namespace Hostel_accounting
 
         private void load_combobox()
         {
-            
+            string sql = "SELECT * FROM Sex";
+            using (SqlCommand cmd = new SqlCommand(sql, dataBase.getConnection()))
+            {
+                cmd.CommandType = CommandType.Text;
+                Table2 = new DataTable();
+                adapter2 = new SqlDataAdapter(cmd);
+                adapter2.Fill(Table2);
+                comboBox1.DataSource = Table2;
+                comboBox1.DisplayMember = "Sex";
+                comboBox1.ValueMember = "ID";
+            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -75,39 +89,51 @@ namespace Hostel_accounting
         private void button1_Click(object sender, EventArgs e)
         {
             
+            
             if (textBox2.Text == "" & textBox3.Text == "" & textBox5.Text == "")
             {
                 MessageBox.Show("Данные не введены");
             }
             else
             {
-                try
+                String input = textBox5.Text;
+                if(int.TryParse(input, out int number))
                 {
-                    dataBase.openConnection();
-                    string quary = "INSERT INTO Rooms (RoomNumber,Settled ,Capacity, Occupied, Rent) VALUES(@RoomNumber, @Settled, @Capacity, @Occupied, @Rent)";
-                    SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
-                    cmd.Parameters.AddWithValue("@RoomNumber", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@Settled", 0);
-                    cmd.Parameters.AddWithValue("@Capacity", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Occupied", 0);
-                    cmd.Parameters.AddWithValue("@Rent", textBox5.Text);
-                    cmd.ExecuteNonQuery();
-                    Table.Clear();
-                    adapter.Fill(Table);
-                    dataGridView1.DataSource = Table;
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox5.Text = "";
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Стоимость комнаты не может быть отрицательной");
+                        textBox5.Text = "";
+                    }
                 }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
-                finally
-                {
-                    dataBase.closeConnection();
-                }
+                else
+                    try
+                    {
+                        dataBase.openConnection();
+                        string quary = "INSERT INTO Rooms (RoomNumber,Settled ,Capacity, Occupied, Rent, Room_for) VALUES(@RoomNumber, @Settled, @Capacity, @Occupied, @Rent, @Room_for)";
+                        SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
+                        cmd.Parameters.AddWithValue("@RoomNumber", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@Settled", 0);
+                        cmd.Parameters.AddWithValue("@Capacity", textBox3.Text);
+                        cmd.Parameters.AddWithValue("@Occupied", 0);
+                        cmd.Parameters.AddWithValue("@Rent", textBox5.Text);
+                        cmd.Parameters.AddWithValue("@Room_for", comboBox1.SelectedValue);
+                        cmd.ExecuteNonQuery();
+                        Table.Clear();
+                        adapter.Fill(Table);
+                        dataGridView1.DataSource = Table;
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox5.Text = "";
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception);
+                        throw;
+                    }
+                    finally
+                    {
+                        dataBase.closeConnection();
+                    }
             }
         }
 
@@ -119,26 +145,38 @@ namespace Hostel_accounting
             }
             else
             {
-
-                try
+                String input = textBox5.Text;
+                if(int.TryParse(input, out int number))
                 {
-                    
-                    dataBase.openConnection();
-                    string quary = "UPDATE  Rooms  SET RoomNumber = '" + textBox2.Text + "' , Capacity = '" + textBox3.Text + "',Rent =  '" + textBox5.Text + "' WHERE RoomId ='" + textBox1.Text + "';";
-                    SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
-                    cmd.ExecuteNonQuery();
-                    Table.Clear();
-                    adapter.Fill(Table);
-                    dataGridView1.DataSource = Table;
-                    textBox2.Text = "";
-                    textBox3.Text = "";
-                    textBox5.Text = "";
+                    if (number < 0)
+                    {
+                        MessageBox.Show("Стоимость комнаты не может быть отрицательной");
+                    }
                 }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
+                else
+                    try
+                    {
+                        
+                        dataBase.openConnection();
+                        string quary = "UPDATE  Rooms  SET RoomNumber = '" + textBox2.Text + "' , Capacity = '" + textBox3.Text + "',Rent =  '" + textBox5.Text + "' WHERE RoomId ='" + textBox1.Text + "';";
+                        SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
+                        cmd.ExecuteNonQuery();
+                        Table.Clear();
+                        adapter.Fill(Table);
+                        dataGridView1.DataSource = Table;
+                        textBox2.Text = "";
+                        textBox3.Text = "";
+                        textBox5.Text = "";
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception);
+                        throw;
+                    }
+                    finally
+                    {
+                        dataBase.closeConnection();
+                    }
             }
         }
 
@@ -191,6 +229,11 @@ namespace Hostel_accounting
                 bool value = (bool)dataGridView1.SelectedRows[3].Cells["Occupied"].Value;
                 checkBox1.Checked = value;
             }*/
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

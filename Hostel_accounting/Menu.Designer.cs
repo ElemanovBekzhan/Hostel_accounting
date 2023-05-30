@@ -76,6 +76,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.справочникToolStripMenuItem, this.выходToolStripMenuItem });
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -86,18 +87,21 @@
             // справочникToolStripMenuItem
             // 
             this.справочникToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.контактыToolStripMenuItem, this.оРазработчикеToolStripMenuItem });
+            this.справочникToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.справочникToolStripMenuItem.Name = "справочникToolStripMenuItem";
             this.справочникToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.справочникToolStripMenuItem.Text = "Справочник";
             // 
             // контактыToolStripMenuItem
             // 
+            this.контактыToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.контактыToolStripMenuItem.Name = "контактыToolStripMenuItem";
             this.контактыToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.контактыToolStripMenuItem.Text = "Контакты";
             // 
             // оРазработчикеToolStripMenuItem
             // 
+            this.оРазработчикеToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.оРазработчикеToolStripMenuItem.Name = "оРазработчикеToolStripMenuItem";
             this.оРазработчикеToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.оРазработчикеToolStripMenuItem.Text = "О разработчике";
@@ -105,6 +109,7 @@
             // 
             // выходToolStripMenuItem
             // 
+            this.выходToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.выходToolStripMenuItem.Text = "Выход";
@@ -115,6 +120,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(330, 380);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
