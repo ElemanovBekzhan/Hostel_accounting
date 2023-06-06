@@ -85,6 +85,8 @@ namespace Hostel_accounting
                 {
                     dataBase.closeConnection();
                 }
+
+                UpdateMenu();
             }
         }
 
@@ -149,6 +151,37 @@ namespace Hostel_accounting
             //maskedTextBox1.Validating += maskedTextBox1_Validating;
         }
 
+        private void UpdateMenu()
+        {
+            dataBase.openConnection();
+            string query = "SELECT dbo.Students.StudentId, dbo.Students.FIO, dbo.Sex.Sex, dbo.Students.BirthDate, dbo.Students.PhoneNumber, dbo.Students.Email, dbo.Students.StudentCardNumber, dbo.Faculties.FacultiesName, dbo.Rooms.RoomNumber," + 
+                           " dbo.Students.Passport, dbo.Students.Inventory, dbo.Students.Data_of_receipt"+
+                           " FROM dbo.Sex INNER JOIN" +
+                           " dbo.Students ON dbo.Sex.ID = dbo.Students.Sex INNER JOIN" +
+                           " dbo.Rooms ON dbo.Students.Room_residence = dbo.Rooms.RoomId INNER JOIN"+
+                           " dbo.Faculties ON dbo.Students.FacultiesId = dbo.Faculties.FacultiesId";
+            adapter = new SqlDataAdapter(query, dataBase.getConnection());
+            Table = new DataTable();
+            adapter.Fill(Table);
+            dataGridView1.DataSource = Table;
+            dataGridView1.Columns["StudentId"].Visible = false;
+            dataGridView1.Columns["StudentId"].ReadOnly = true;
+            textBox1.Visible = false;
+            Load_combobox();
+            Load_combobox2();
+            dataGridView1.Columns["StudentId"].ReadOnly = true;
+            dataGridView1.Columns[1].HeaderText = "ФИО";
+            dataGridView1.Columns[2].HeaderText = "Пол";
+            dataGridView1.Columns[3].HeaderText = "Дата рождения";
+            dataGridView1.Columns[4].HeaderText = "Телефон";
+            dataGridView1.Columns[5].HeaderText = "Почта";
+            dataGridView1.Columns[6].HeaderText = "Студенческий номер";
+            dataGridView1.Columns[7].HeaderText = "Институт";
+            dataGridView1.Columns[8].HeaderText = "Комната №";
+            dataGridView1.Columns[9].HeaderText = "ID Пасспорта";
+            dataGridView1.Columns[10].HeaderText = "Инвентарь";
+            dataGridView1.Columns[11].HeaderText = "Дата поступления";
+        }
         private void Load_combobox2()
         {
             string sql = "SELECT * FROM Sex";
@@ -326,12 +359,15 @@ namespace Hostel_accounting
 
             if (value.Length != 9 || !value.StartsWith("ID") || !int.TryParse(value.Substring(2), out _))
             {
-                // Значение не соответствует шаблону "ID" + 7 цифр
                 MessageBox.Show("Введите значение в формате ID1234567.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Cancel = true; // Отменить переход фокуса
+                e.Cancel = true; 
             }
         }
     }   
   
 
 }
+
+
+
+

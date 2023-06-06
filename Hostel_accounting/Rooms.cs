@@ -105,35 +105,37 @@ namespace Hostel_accounting
                         textBox5.Text = "";
                     }
                 }
-                else
-                    try
-                    {
-                        dataBase.openConnection();
-                        string quary = "INSERT INTO Rooms (RoomNumber,Settled ,Capacity, Occupied, Rent, Room_for) VALUES(@RoomNumber, @Settled, @Capacity, @Occupied, @Rent, @Room_for)";
-                        SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
-                        cmd.Parameters.AddWithValue("@RoomNumber", textBox2.Text);
-                        cmd.Parameters.AddWithValue("@Settled", 0);
-                        cmd.Parameters.AddWithValue("@Capacity", textBox3.Text);
-                        cmd.Parameters.AddWithValue("@Occupied", 0);
-                        cmd.Parameters.AddWithValue("@Rent", textBox5.Text);
-                        cmd.Parameters.AddWithValue("@Room_for", comboBox1.SelectedValue);
-                        cmd.ExecuteNonQuery();
-                        Table.Clear();
-                        adapter.Fill(Table);
-                        dataGridView1.DataSource = Table;
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox5.Text = "";
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(exception);
-                        throw;
-                    }
-                    finally
-                    {
+
+                try
+                {
+                    dataBase.openConnection();
+                    string quary =
+                        "INSERT INTO Rooms (RoomNumber,Settled ,Capacity, Occupied, Rent, Room_for) VALUES(@RoomNumber, @Settled, @Capacity, @Occupied, @Rent, @Room_for)";
+                    SqlCommand cmd = new SqlCommand(quary, dataBase.getConnection());
+                    cmd.Parameters.AddWithValue("@RoomNumber", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@Settled", 0);
+                    cmd.Parameters.AddWithValue("@Capacity", textBox3.Text);
+                    cmd.Parameters.AddWithValue("@Occupied", 0);
+                    cmd.Parameters.AddWithValue("@Rent", textBox5.Text);
+                    cmd.Parameters.AddWithValue("@Room_for", comboBox1.SelectedValue);
+                    cmd.ExecuteNonQuery();
+                    Table.Clear();
+                    adapter.Fill(Table);
+                    dataGridView1.DataSource = Table;
+                    textBox2.Text = "";
+                    textBox3.Text = "";
+                    textBox5.Text = "";
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Комната с таким номер уже существует");
+                }
+                finally
+                {
                         dataBase.closeConnection();
-                    }
+
+                }
+                
             }
         }
 
@@ -143,8 +145,7 @@ namespace Hostel_accounting
             {
                 MessageBox.Show("Данные не введены");
             }
-            else
-            {
+            
                 String input = textBox5.Text;
                 if(int.TryParse(input, out int number))
                 {
@@ -153,8 +154,7 @@ namespace Hostel_accounting
                         MessageBox.Show("Стоимость комнаты не может быть отрицательной");
                     }
                 }
-                else
-                    try
+                try
                     {
                         
                         dataBase.openConnection();
@@ -177,7 +177,7 @@ namespace Hostel_accounting
                     {
                         dataBase.closeConnection();
                     }
-            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
